@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="musicApp">
+	<head>
+		<title>Music App</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="css/styles.css" />
+		<script src="js/angular.js"></script>
+		<script src="scripts/app.js"></script>
+		<script src="scripts/controllers/controller.js"></script>
+		<script src="scripts/services/services.js"></script>
+	</head>
+	<body>
+		<div ng-controller="musicController">
+			<input type="text" ng-model="artist.name" value="Enter Artist name"/>
+			<div id="gobutton" ng-click="artist.fetchData()">Go!</div>
+			<div id="music_wrapper">
+				<div id="musicinfo" ng-repeat="song in artist.songs">
+					<div id="placement">
+						<div id="desc">
+							<p>Song: {{song.trackCensoredName}}</p>
+							<p>Album: {{song.collectionName}}</p>
+							<p>Release Date: {{song.releaseDate}}</p>
+							<a ng-href="{{song.previewUrl}}">Listen to the preview here</a>
+						</div>
+						<img ng-src="{{song.artworkUrl100}}"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
