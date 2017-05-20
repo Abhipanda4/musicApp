@@ -1,40 +1,25 @@
-input{
-	border:2px solid black;
-	width:400px;
-	height:50px;
-	position:relative;
-	margin:10px auto;
-	display:block;
-	text-align:center;
+body{
+	background-color:#eeeeee;
 }
-#gobutton{
-	position:relative;
-	border:1px solid black;
-	padding:4px; 
-	width:100px;
-	text-align:center;
-	cursor:pointer;
-	margin:20px auto;
+.content{
+	background-color:#eeeeee;
+}
+.md-block{
+	width:40%;
+	margin:40px auto;
 }
 
-#music_wrapper{
-	width:90%;
-	position:relative;
+.submitbtn{
+	display:block;
 	margin:0 auto;
 }
 
-#musicinfo{
-	position:relative;
-	width:40%;
-	padding:4.6%;
-	padding-top:2%;
-	border:1px solid black;
-	float:left;
+.titlebar{
+	text-align:center;
 }
 
-#placement{
-	position:relative;
-	width:100%;
-	margin:0;
+a{
+	text-decoration:none;
+	color:red;
+	font-weight:bold;
 }
-
