@@ -4,29 +4,55 @@
 		<title>Music App</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">		
 		<link rel="stylesheet" href="css/styles.css" />
-		<script src="js/angular.js"></script>
-		<script src="scripts/app.js"></script>
-		<script src="scripts/controllers/controller.js"></script>
-		<script src="scripts/services/services.js"></script>
+
 	</head>
-	<body>
-		<div ng-controller="musicController">
-			<input type="text" ng-model="artist.name" value="Enter Artist name"/>
-			<div id="gobutton" ng-click="artist.fetchData()">Go!</div>
+	<body ng-cloak>
+		<div class="content" ng-controller="musicController">
+			<md-toolbar class="titlebar"><h1>Music App</h1></md-toolbar>
+			<md-input-container class="md-block">
+				<label>Enter Artist Name</label>
+				<input ng-model="artist.name">
+			</md-input-container>
+			<md-button class="submitbtn md-raised md-warn md-hue-2" ng-click="artist.fetchData()">GO!</md-button>
+
 			<div id="music_wrapper">
-				<div id="musicinfo" ng-repeat="song in artist.songs">
-					<div id="placement">
-						<div id="desc">
-							<p>Song: {{song.trackCensoredName}}</p>
-							<p>Album: {{song.collectionName}}</p>
-							<p>Release Date: {{song.releaseDate}}</p>
-							<a ng-href="{{song.previewUrl}}">Listen to the preview here</a>
-						</div>
-						<img ng-src="{{song.artworkUrl100}}"/>
+				<div class="content" layout-gt-sm="row" id="musicinfo" ng-repeat="song in artist.songs | orderBy:'-releaseDate'">
+					<div flex-gt-sm="25"></div>
+					<div class="content" flex-gt-sm="50" layout="column">
+						<md-card md-theme="default">
+							<md-card-title>
+								<md-card-title-text>
+									<span class="md-headline">{{song.trackCensoredName}}</span>
+									<p>Album: {{song.collectionName}}</p>
+									<p>Release Date: {{song.releaseDate | date}}</p>
+									<a ng-href="{{song.previewUrl}}">Listen to the preview here</a>
+								</md-card-title-text>
+								<md-card-title-media>
+									<div class="md-media-xl">
+										<img ng-src="{{song.artworkUrl100}}"/>
+									</div>
+								</md-card-title-media>
+							</md-card-title>
+							<md-card-actions layout="row" layout-align="center">
+								<md-button>Action 1</md-button>
+								<md-button>Action 2</md-button>
+							</md-card-actions>
+						</md-card>
 					</div>
+					<div flex-gt-sm="25"></div>
 				</div>
 			</div>
 		</div>
+		<!--<script src="js/angular.js"></script>-->
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-aria.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-messages.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+		<script src="scripts/app.js"></script>
+		<script src="scripts/controllers/controller.js"></script>
+		<script src="scripts/services/services.js"></script>
 	</body>
 </html>
